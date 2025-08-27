@@ -1,14 +1,16 @@
 <template>
 	<li>
 		<base-card>
-			<header>
-				<h3>{{ title }}</h3>
-				<base-button mode="flat" @click="$emit('delete-resource', id)">Delete</base-button>
-			</header>
-		<p>{{ description }}</p>
-		<nav>
-			<a :href="link">View Resource</a>
-		</nav>
+			<div class="resource-content">
+				<header class="resource-header">
+					<h3>{{ title }}</h3>
+					<base-button mode="flat" @click="$emit('delete-resource', id)" class="delete-btn">Delete</base-button>
+				</header>
+				<p class="resource-description">{{ description }}</p>
+				<nav class="resource-nav">
+					<a :href="link" target="_blank" rel="noopener noreferrer">View Resource</a>
+				</nav>
+			</div>
     </base-card>
 	</li>
 </template>
@@ -40,11 +42,16 @@ li:hover {
 	transform: scale(1.02);
 }
 
-header {
+.resource-content {
+	position: relative;
+}
+
+.resource-header {
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
+	align-items: flex-start;
 	margin-bottom: 1rem;
+	gap: 12px;
 }
 
 h3 {
@@ -56,13 +63,18 @@ h3 {
 	-webkit-text-fill-color: transparent;
 	background-clip: text;
 	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+	flex: 1;
 }
 
-nav {
+.delete-btn {
+	flex-shrink: 0;
+}
+
+.resource-nav {
 	margin-top: 16px;
 }
 
-nav a {
+.resource-nav a {
 	color: #ec4899;
 	text-decoration: none;
 	font-weight: 600;
@@ -77,7 +89,7 @@ nav a {
 	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-nav a:hover {
+.resource-nav a:hover {
 	background: rgba(219, 39, 119, 0.2);
 	transform: translateY(-2px);
 	box-shadow: 0 6px 20px rgba(219, 39, 119, 0.3);
@@ -85,7 +97,7 @@ nav a:hover {
 	color: #ffffff;
 }
 
-p {
+.resource-description {
 	margin: 0;
 	color: rgba(255, 255, 255, 0.8);
 	font-size: 1rem;
@@ -97,30 +109,38 @@ p {
 	li {
 		margin-bottom: 20px;
 	}
-	header {
+	.resource-header {
 		flex-direction: column;
-		align-items: flex-start;
+		align-items: stretch;
 		gap: 12px;
 		margin-bottom: 0.8rem;
 	}
 	h3 {
 		font-size: 1.2rem;
-		margin-bottom: 0;
+		margin-bottom: 8px;
+		text-align: center;
 	}
-	nav {
+	.delete-btn {
+		align-self: center;
+		padding: 8px 16px !important;
+		font-size: 0.85rem !important;
+	}
+	.resource-nav {
 		margin-top: 12px;
-		width: 100%;
+		text-align: center;
 	}
-	nav a {
-		padding: 8px 16px;
-		font-size: 0.9rem;
+	.resource-nav a {
+		padding: 10px 18px;
+		font-size: 0.95rem;
+		display: block;
 		width: 100%;
 		text-align: center;
-		display: block;
+		box-sizing: border-box;
 	}
-	p {
+	.resource-description {
 		font-size: 0.95rem;
 		line-height: 1.5;
+		text-align: center;
 	}
 }
 
@@ -128,21 +148,21 @@ p {
 	li {
 		margin-bottom: 16px;
 	}
-	header {
+	.resource-header {
 		gap: 8px;
 	}
 	h3 {
 		font-size: 1.1rem;
 	}
-	nav a {
+	.resource-nav a {
 		padding: 6px 12px;
 		font-size: 0.85rem;
 		border-radius: 6px;
 	}
-	nav a:hover {
+	.resource-nav a:hover {
 		transform: translateY(-1px);
 	}
-	p {
+	.resource-description {
 		font-size: 0.9rem;
 	}
 }

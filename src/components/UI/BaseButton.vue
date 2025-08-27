@@ -98,20 +98,26 @@ export default {
 
 @media (max-width: 768px) {
   .base-btn {
-    padding: 10px 18px;
-    font-size: 0.9em;
+    padding: 12px 20px;
+    font-size: 0.95em;
     margin: 0 4px 8px 0;
     border-radius: 10px;
+    min-height: 44px; /* iOS touch target minimum */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
 @media (max-width: 480px) {
   .base-btn {
-    padding: 8px 16px;
-    font-size: 0.85em;
-    margin: 0 2px 6px 0;
+    padding: 12px 18px;
+    font-size: 0.9em;
+    margin: 0 2px 8px 0;
     border-radius: 8px;
     letter-spacing: 0.3px;
+    min-height: 44px;
+    width: auto;
   }
   .base-btn:hover {
     transform: translateY(-1px);

@@ -1,15 +1,19 @@
 <template>
   <base-card>
-    <base-button
-      @click="setSelectedTab('stored-resource')"
-      :mode="StoredResButtonMode"
-      >Stored Resources</base-button
-    >
-    <base-button
-      @click="setSelectedTab('add-resource')"
-      :mode="addResButtonMode"
-      >Add Resource</base-button
-    >
+    <div class="tab-buttons">
+      <base-button
+        @click="setSelectedTab('stored-resource')"
+        :mode="StoredResButtonMode"
+        class="tab-button"
+        >Stored Resources</base-button
+      >
+      <base-button
+        @click="setSelectedTab('add-resource')"
+        :mode="addResButtonMode"
+        class="tab-button"
+        >Add Resource</base-button
+      >
+    </div>
   </base-card>
   <keep-alive>
     <component :is="selectedTab"></component>
@@ -77,3 +81,46 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.tab-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tab-button {
+  flex: 1;
+  min-width: 140px;
+}
+
+@media (max-width: 768px) {
+  .tab-buttons {
+    gap: 8px;
+    flex-direction: column;
+  }
+  
+  .tab-button {
+    width: 100%;
+    min-width: auto;
+    text-align: center;
+    padding: 12px 16px !important;
+    font-size: 0.95rem !important;
+    margin: 0 0 8px 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .tab-buttons {
+    gap: 6px;
+  }
+  
+  .tab-button {
+    padding: 10px 14px !important;
+    font-size: 0.9rem !important;
+    margin: 0 0 6px 0 !important;
+    border-radius: 8px !important;
+  }
+}
+</style>
